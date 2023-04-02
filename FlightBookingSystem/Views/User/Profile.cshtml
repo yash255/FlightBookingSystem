@@ -1,0 +1,38 @@
+﻿@model FlightBookingSystem.Models.User
+
+<h2>@Model.Email</h2>
+
+<h3>Bookings:</h3>
+@if (Model.Bookings != null && Model.Bookings.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Flight</th>
+                <th>Date</th>
+                <th>No. of Tickets</th>
+                <th>Cabin Class</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model.Bookings)
+            {
+                <tr>
+                    <td>@booking.Id</td>
+                    <td>@booking.Flight.FlightNumber - @booking.Flight.DepartureCity to @booking.Flight.ArrivalCity</td>
+                    <td>@booking.Flight.ArrivalTime.ToString("dd MMM yyyy")</td>
+                    <td>@booking.Flight.DepartureTime.ToString("dd MMM yyyy")</td>
+                    <td>@booking.NoOfTickets</td>
+                    <td>@booking.CabinClass</td>
+                    <td>@booking.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No bookings found.</p>
+}

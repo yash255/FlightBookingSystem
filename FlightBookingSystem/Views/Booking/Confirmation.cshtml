@@ -1,0 +1,19 @@
+﻿@model FlightBookingSystem.Models.Booking
+
+<h2>Booking Confirmation</h2>
+
+<p>Passenger Name: @Model.PassengerName</p>
+<p>Email: @Model.Email</p>
+<p>Gender: @Model.Gender</p>
+<p>Phone Number: @Model.PhoneNumber</p>
+<p>Cabin Class: @Model.CabinClass</p>
+<p>No. of Tickets: @Model.NoOfTickets</p>
+<p>Booking Time: @Model.BookingTime</p>
+<p>Flight Details:</p>
+<ul>
+    <li>Flight Number: @Model.Flight.FlightNumber</li>
+    <li>Departure City: @Model.Flight.DepartureCity</li>
+    <li>Arrival City: @Model.Flight.ArrivalCity</li>
+    <li>Departure Time: @Model.Flight.DepartureTime</li>
+    <li>Price: @Model.Price</li>
+</ul>
