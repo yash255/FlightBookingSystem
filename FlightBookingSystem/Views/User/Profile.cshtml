@@ -1,32 +1,40 @@
 ﻿@model FlightBookingSystem.Models.User
 
+@{
+    ViewBag.Title = "Profile";
+}
+
 <h2>@Model.Email</h2>
 
-<h3>Bookings:</h3>
-@if (Model.Bookings != null && Model.Bookings.Any())
+<p>First Name: @Model.FirstName</p>
+<p>Last Name: @Model.LastName</p>
+
+<h3>Bookings</h3>
+@if (ViewBag.Bookings.Count > 0)
 {
     <table class="table">
         <thead>
             <tr>
-                <th>Booking ID</th>
-                <th>Flight</th>
-                <th>Date</th>
-                <th>No. of Tickets</th>
-                <th>Cabin Class</th>
-                <th>Total Price</th>
+                <th>Flight Number</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure Date</th>
+                <th>Passengers</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var booking in Model.Bookings)
+            @foreach (var booking in ViewBag.Bookings)
             {
                 <tr>
-                    <td>@booking.Id</td>
-                    <td>@booking.Flight.FlightNumber - @booking.Flight.DepartureCity to @booking.Flight.ArrivalCity</td>
-                    <td>@booking.Flight.ArrivalTime.ToString("dd MMM yyyy")</td>
-                    <td>@booking.Flight.DepartureTime.ToString("dd MMM yyyy")</td>
-                    <td>@booking.NoOfTickets</td>
-                    <td>@booking.CabinClass</td>
-                    <td>@booking.Price</td>
+                    <td>@booking.FlightNumber</td>
+                    <td>@booking.From</td>
+                    <td>@booking.To</td>
+                    <td>@booking.DepartureDate</td>
+                    <td>@booking.Passengers</td>
+                    <td>
+                        @Html.ActionLink("Cancel", "CancelBooking", new { id = booking.Id }, new { @class = "btn btn-danger" })
+                    </td>
                 </tr>
             }
         </tbody>
@@ -34,5 +42,5 @@
 }
 else
 {
-    <p>No bookings found.</p>
+    <p>You have no bookings.</p>
 }

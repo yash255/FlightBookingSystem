@@ -73,24 +73,31 @@ namespace FlightBookingSystem.Controllers
             return View(model);
         }
 
-        public ActionResult Profile(int id)
-        {
-            var user = _context.Users.Include("Bookings")
-                              .FirstOrDefault(u => u.Id == id);
 
+
+        [HttpGet]
+        public ActionResult Profile()
+        {
+            int userId = Convert.ToInt32(Session["Id"]);
+
+            User user = _context.Users.FirstOrDefault(u => u.Id == userId);
 
             if (user == null)
             {
                 return HttpNotFound();
             }
 
+            List<Booking> bookings = _context.Bookings.Where(b => b.UserId == userId).ToList();
+
+            ViewBag.Bookings = bookings;
+
             return View(user);
         }
 
+        // GET: User/Logout
         public ActionResult Logout()
         {
-            HttpContext.Session.Clear();
-
+            Session.Clear();
             return RedirectToAction("Index", "Home");
         }
     }

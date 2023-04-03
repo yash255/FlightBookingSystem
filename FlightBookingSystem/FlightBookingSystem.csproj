@@ -136,13 +136,21 @@
     <Compile Include="enum\CabinClass.cs" />
     <Compile Include="enum\Gender.cs" />
     <Compile Include="enum\UserRole.cs" />
-    <Compile Include="Migrations\202304021647200_Create.cs" />
-    <Compile Include="Migrations\202304021647200_Create.designer.cs">
-      <DependentUpon>202304021647200_Create.cs</DependentUpon>
+    <Compile Include="Migrations\202304030656538_updatedatabase.cs" />
+    <Compile Include="Migrations\202304030656538_updatedatabase.designer.cs">
+      <DependentUpon>202304030656538_updatedatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304021714536_RemoveCity.cs" />
-    <Compile Include="Migrations\202304021714536_RemoveCity.designer.cs">
-      <DependentUpon>202304021714536_RemoveCity.cs</DependentUpon>
+    <Compile Include="Migrations\202304030659580_updatedatabase1.cs" />
+    <Compile Include="Migrations\202304030659580_updatedatabase1.designer.cs">
+      <DependentUpon>202304030659580_updatedatabase1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304030707476_updatedatabase2.cs" />
+    <Compile Include="Migrations\202304030707476_updatedatabase2.designer.cs">
+      <DependentUpon>202304030707476_updatedatabase2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304030709468_updatedatabase3.cs" />
+    <Compile Include="Migrations\202304030709468_updatedatabase3.designer.cs">
+      <DependentUpon>202304030709468_updatedatabase3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -205,7 +213,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Flight\Search.cshtml" />
@@ -216,6 +223,8 @@
     <Content Include="Views\AdminFlight\CreateFlight.cshtml" />
     <Content Include="Views\Booking\CreateBooking.cshtml" />
     <Content Include="Views\Booking\Confirmation.cshtml" />
+    <Content Include="Views\AdminFlight\EditFlight.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -249,11 +258,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202304021647200_Create.resx">
-      <DependentUpon>202304021647200_Create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304030656538_updatedatabase.resx">
+      <DependentUpon>202304030656538_updatedatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304021714536_RemoveCity.resx">
-      <DependentUpon>202304021714536_RemoveCity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304030659580_updatedatabase1.resx">
+      <DependentUpon>202304030659580_updatedatabase1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304030707476_updatedatabase2.resx">
+      <DependentUpon>202304030707476_updatedatabase2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304030709468_updatedatabase3.resx">
+      <DependentUpon>202304030709468_updatedatabase3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

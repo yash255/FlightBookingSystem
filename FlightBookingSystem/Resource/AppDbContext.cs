@@ -31,20 +31,27 @@ namespace FlightBookingSystem.Resource
                 .HasForeignKey(b => b.UserId)
                 .WillCascadeOnDelete(false);
 
-           /* modelBuilder.Entity<Flight>()
-                .HasRequired(f => f.DepartureCity)
-                .WithMany(c => c.DepartureFlights)
-                .HasForeignKey(f => f.DepartureCityId)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Flight>()
-                .HasRequired(f => f.ArrivalCity)
-                .WithMany(c => c.ArrivalFlights)
-                .HasForeignKey(f => f.ArrivalCityId)
-                .WillCascadeOnDelete(false);*/
+          /*  modelBuilder.Entity<Flight>()
+                  .HasRequired(f => f.User)
+                  .WithMany(u => u.Flights)
+                  .HasForeignKey(f => f.UserId)
+                  .WillCascadeOnDelete(false);*/
 
 
-           
+            /* modelBuilder.Entity<Flight>()
+                 .HasRequired(f => f.DepartureCity)
+                 .WithMany(c => c.DepartureFlights)
+                 .HasForeignKey(f => f.DepartureCityId)
+                 .WillCascadeOnDelete(false);
+
+             modelBuilder.Entity<Flight>()
+                 .HasRequired(f => f.ArrivalCity)
+                 .WithMany(c => c.ArrivalFlights)
+                 .HasForeignKey(f => f.ArrivalCityId)
+                 .WillCascadeOnDelete(false);*/
+
+
+
         }
 
     }

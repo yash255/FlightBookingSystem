@@ -18,33 +18,42 @@ namespace FlightBookingSystem.Controllers
         }
 
         // GET: Booking/Create
-        public ActionResult CreateBooking(int? flightId, int userId)
+        public ActionResult CreateBooking(int id)
         {
-            // Retrieve the flight and user from the database
-            var flight = _context.Flights.FirstOrDefault(f => f.Id == flightId);
-            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            var flight = _context.Flights.Find(id);
 
-            // If either the flight or user is not found, redirect to an error page
-            if (flight == null || user == null)
+            if (flight == null)
             {
-                return RedirectToAction("Error", "Home");
+                return HttpNotFound();
             }
 
-            // Create a new booking and set its default properties
-            var booking = new Booking
+            var user = _context.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
+
+           /* if (!User.Identity.IsAuthenticated)
             {
-                Flight = flight,
-                User = user,
-                BookingTime = DateTime.Now
+                return RedirectToAction("Login", "Account");
+            }*/
+
+            var booking = new Booking()
+            {
+                FlightId = flight.Id,
+                UserId = user.Id,
+                BookingTime = DateTime.Now,
+                Price = flight.Price
             };
 
-            return View(booking);
+            _context.Bookings.Add(booking);
+            _context.SaveChanges();
+
+            return RedirectToAction("Confirmation", new { id = booking.Id });
         }
+
+
 
         // POST: Booking/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Booking booking)
+        public ActionResult CreateBooking(Booking booking)
         {
             // Validate the booking model
             if (!ModelState.IsValid)

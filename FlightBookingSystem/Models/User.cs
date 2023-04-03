@@ -30,6 +30,10 @@ namespace FlightBookingSystem.Models
         public UserRole Role { get; set; } = UserRole.User;
 
         public ICollection<Booking> Bookings { get; set; }
+      //  public ICollection<Flight> Flights { get; set; }
+
+
+
     }
 
 }

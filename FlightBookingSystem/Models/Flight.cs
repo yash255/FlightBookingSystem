@@ -32,6 +32,12 @@ namespace FlightBookingSystem.Models
         [Required]
         public decimal Price { get; set; }
 
+        
+       /* public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public User User { get; set; }*/
+
         public ICollection<Booking> Bookings { get; set; }
     }
 

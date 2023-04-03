@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Create : DbMigration
+    public partial class updatedatabase : DbMigration
     {
         public override void Up()
         {
@@ -36,32 +36,16 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         FlightNumber = c.String(nullable: false, maxLength: 50),
+                        DepartureCity = c.String(),
+                        ArrivalCity = c.String(),
                         DepartureTime = c.DateTime(nullable: false),
                         ArrivalTime = c.DateTime(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        City_Id = c.Int(),
-                        City_Id1 = c.Int(),
-                        ArrivalCity_Id = c.Int(),
-                        DepartureCity_Id = c.Int(),
+                        UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cities", t => t.City_Id)
-                .ForeignKey("dbo.Cities", t => t.City_Id1)
-                .ForeignKey("dbo.Cities", t => t.ArrivalCity_Id)
-                .ForeignKey("dbo.Cities", t => t.DepartureCity_Id)
-                .Index(t => t.City_Id)
-                .Index(t => t.City_Id1)
-                .Index(t => t.ArrivalCity_Id)
-                .Index(t => t.DepartureCity_Id);
-            
-            CreateTable(
-                "dbo.Cities",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 50),
-                    })
-                .PrimaryKey(t => t.Id);
+                .ForeignKey("dbo.Users", t => t.UserId)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.Users",
@@ -82,18 +66,11 @@
         {
             DropForeignKey("dbo.Bookings", "UserId", "dbo.Users");
             DropForeignKey("dbo.Bookings", "FlightId", "dbo.Flights");
-            DropForeignKey("dbo.Flights", "DepartureCity_Id", "dbo.Cities");
-            DropForeignKey("dbo.Flights", "ArrivalCity_Id", "dbo.Cities");
-            DropForeignKey("dbo.Flights", "City_Id1", "dbo.Cities");
-            DropForeignKey("dbo.Flights", "City_Id", "dbo.Cities");
-            DropIndex("dbo.Flights", new[] { "DepartureCity_Id" });
-            DropIndex("dbo.Flights", new[] { "ArrivalCity_Id" });
-            DropIndex("dbo.Flights", new[] { "City_Id1" });
-            DropIndex("dbo.Flights", new[] { "City_Id" });
+            DropForeignKey("dbo.Flights", "UserId", "dbo.Users");
+            DropIndex("dbo.Flights", new[] { "UserId" });
             DropIndex("dbo.Bookings", new[] { "UserId" });
             DropIndex("dbo.Bookings", new[] { "FlightId" });
             DropTable("dbo.Users");
-            DropTable("dbo.Cities");
             DropTable("dbo.Flights");
             DropTable("dbo.Bookings");
         }

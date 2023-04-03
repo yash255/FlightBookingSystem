@@ -23,8 +23,8 @@
                 <td>@flight.FlightNumber</td>
                 <td>@flight.DepartureCity</td>
                 <td>@flight.ArrivalCity</td>
-                <td>@flight.DepartureTime.ToShortTimeString()</td>
-                <td>@flight.ArrivalTime.ToShortTimeString()</td>
+                <td>@flight.DepartureTime</td>
+                <td>@flight.ArrivalTime</td>
                 <td>@flight.Price.ToString("C")</td>
                 <td>
                     <a href="@Url.Action("EditFlight", new { id = flight.Id })" class="btn btn-sm btn-primary">Edit</a>

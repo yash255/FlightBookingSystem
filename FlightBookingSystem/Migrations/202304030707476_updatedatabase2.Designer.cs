@@ -7,13 +7,13 @@ namespace FlightBookingSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Create : IMigrationMetadata
+    public sealed partial class updatedatabase2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Create));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedatabase2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304021647200_Create"; }
+            get { return "202304030707476_updatedatabase2"; }
         }
         
         string IMigrationMetadata.Source
