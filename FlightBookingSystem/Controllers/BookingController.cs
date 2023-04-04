@@ -1,4 +1,5 @@
-﻿using FlightBookingSystem.Models;
+﻿using FlightBookingSystem;
+using FlightBookingSystem.Models;
 using FlightBookingSystem.Resource;
 using System;
 using System.Linq;
@@ -61,6 +62,22 @@ public class BookingController : Controller
         if (Session["FlightId"] == null || Session["UserId"] == null)
         {
             return RedirectToAction("Login", "User");
+        }
+
+        decimal price;
+        switch (booking.CabinClass)
+        {
+            case CabinClass.Economy:
+                price = 1000;
+                break;
+            case CabinClass.Business:
+                price = 2000;
+                break;
+            case CabinClass.First:
+                price = 3000;
+                break;
+            default:
+                return RedirectToAction("Error", "Home");
         }
         booking.FlightId = (int)Session["FlightId"];
         booking.UserId = (int)Session["UserId"];
