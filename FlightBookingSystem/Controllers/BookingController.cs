@@ -39,8 +39,9 @@ public class BookingController : Controller
 
 
 
-        Session["FlightId"] = flight.FlightId;
-        Session["UserId"] = user.UserId;
+        TempData["FlightId"] = flight.FlightId;
+        TempData["UserId"] = user.UserId;
+
         var booking = new Booking()
         {
             FlightId = flight.FlightId,
@@ -53,6 +54,7 @@ public class BookingController : Controller
     }
 
     // POST: /Booking/CreateBooking
+    // POST: /Booking/CreateBooking
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult CreateBooking(Booking booking)
@@ -61,36 +63,33 @@ public class BookingController : Controller
         {
             return View(booking);
         }
-        if (Session["FlightId"] == null || Session["UserId"] == null)
+
+        if (TempData["FlightId"] == null || TempData["UserId"] == null)
         {
             return RedirectToAction("Login", "User");
         }
 
-        var flight = _context.Flights.Find((int)Session["FlightId"]);
+        var flight = _context.Flights.Find((int)TempData["FlightId"]);
 
+        decimal price;
+        switch (booking.CabinClass)
+        {
+            case CabinClass.Economy:
+                price = flight.Price;
+                break;
+            case CabinClass.Business:
+                price = flight.Price + 2000;
+                break;
+            case CabinClass.First:
+                price = flight.Price + 3000;
+                break;
+            default:
+                return RedirectToAction("Error", "Home");
+        }
 
-
-
-            decimal price;
-            switch (booking.CabinClass)
-            {
-                case CabinClass.Economy:
-                    price = flight.Price;
-
-                    break;
-                case CabinClass.Business:
-                    price = price = booking.Flight.Price + 2000;
-                    break;
-                case CabinClass.First:
-                    price = price = booking.Flight.Price + 3000;
-                    break;
-                default:
-                    return RedirectToAction("Error", "Home");
-            }
-        
-        booking.FlightId = (int)Session["FlightId"];
-        booking.UserId = (int)Session["UserId"];
-        booking.Price = price*booking.NoOfTicket;
+        booking.FlightId = (int)TempData["FlightId"];
+        booking.UserId = (int)TempData["UserId"];
+        booking.Price = price * booking.NoOfTicket;
         _context.Bookings.Add(booking);
         _context.SaveChanges();
 

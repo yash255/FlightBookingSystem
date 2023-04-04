@@ -8,11 +8,13 @@ using System.Web.Mvc;
 namespace FlightBookingSystem.Controllers
 {
 
-    
 
+    [AdminOnly]
     public class AdminFlightController : Controller
     {
+
         private readonly Resource.AppDbContext _context;
+
 
         public AdminFlightController()
         {
@@ -22,7 +24,7 @@ namespace FlightBookingSystem.Controllers
 
 
         // CRUD operations for flights
-
+       
         public ActionResult FlightsList()
         {
             var flights = _context.Flights.ToList();

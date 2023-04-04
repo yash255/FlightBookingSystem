@@ -38,8 +38,10 @@ namespace Flight_Booking_System.Controllers
                     ModelState.AddModelError("Email", "Email already exists.");
                     return View(model);
                 }
+              //  model.Role = (UserRole)Enum.Parse(typeof(UserRole), "User");
 
-             //   model.Role=UserRole.User;
+
+                //   model.Role=UserRole.User;
 
                 _context.Users.Add(model);
                 _context.SaveChanges();
@@ -67,6 +69,7 @@ namespace Flight_Booking_System.Controllers
             {
                 Session["Id"] = user.UserId;
                 Session["Email"] = user.Email;
+                Session["Role"] = user.Role;
                 return RedirectToAction("Index", "Home");
             }
 
@@ -124,7 +127,7 @@ namespace Flight_Booking_System.Controllers
 
 
 
-        // GET: User/Profile
+        
 
 
         protected override void Dispose(bool disposing)
