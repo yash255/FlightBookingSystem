@@ -50,6 +50,10 @@
                             <td>@booking.Flight.DepartureTime.ToString("dd MMM yyyy")</td>
                             <td>@booking.NoOfTicket</td>
                             <td>@booking.CabinClass</td>
+                            <td>
+                                <a href="@Url.Action("CancelBooking", "User", new { id = booking.Id })" class="btn btn-danger">Cancel</a>
+
+                            </td>
                             
                         </tr>
                     }

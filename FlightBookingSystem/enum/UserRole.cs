@@ -7,11 +7,9 @@ using System.Web;
 namespace FlightBookingSystem
 {
 
-    public enum UserRole
-{User=0,
-            Admin=1
-        
-
-      
+    public class UserRole
+    {
+        public const string Admin = "Admin";
+        public const string User = "User";
     }
 }

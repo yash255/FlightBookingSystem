@@ -176,6 +176,22 @@
     <Compile Include="Migrations\202304041148063_PriceAdded.designer.cs">
       <DependentUpon>202304041148063_PriceAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304041750462_Enumtostring.cs" />
+    <Compile Include="Migrations\202304041750462_Enumtostring.designer.cs">
+      <DependentUpon>202304041750462_Enumtostring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304041813313_Enumtostring1.cs" />
+    <Compile Include="Migrations\202304041813313_Enumtostring1.designer.cs">
+      <DependentUpon>202304041813313_Enumtostring1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304041837157_UserRole.cs" />
+    <Compile Include="Migrations\202304041837157_UserRole.designer.cs">
+      <DependentUpon>202304041837157_UserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304041848258_UserRole1.cs" />
+    <Compile Include="Migrations\202304041848258_UserRole1.designer.cs">
+      <DependentUpon>202304041848258_UserRole1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Flight.cs" />
@@ -311,6 +327,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304041148063_PriceAdded.resx">
       <DependentUpon>202304041148063_PriceAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304041750462_Enumtostring.resx">
+      <DependentUpon>202304041750462_Enumtostring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304041813313_Enumtostring1.resx">
+      <DependentUpon>202304041813313_Enumtostring1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304041837157_UserRole.resx">
+      <DependentUpon>202304041837157_UserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304041848258_UserRole1.resx">
+      <DependentUpon>202304041848258_UserRole1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

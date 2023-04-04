@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.Entity;
 using FlightBookingSystem.Models;
 using System.Reflection.Emit;
+using System.Data.Entity.Core.Metadata.Edm;
+
 
 namespace FlightBookingSystem.Resource
 {
@@ -20,7 +22,7 @@ namespace FlightBookingSystem.Resource
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-            base.OnModelCreating(modelBuilder);
+           
 
 
 

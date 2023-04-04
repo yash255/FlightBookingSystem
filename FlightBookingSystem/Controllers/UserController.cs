@@ -1,4 +1,5 @@
 ﻿
+using FlightBookingSystem;
 using FlightBookingSystem.Models;
 using FlightBookingSystem.Resource;
 using System;
@@ -37,6 +38,8 @@ namespace Flight_Booking_System.Controllers
                     ModelState.AddModelError("Email", "Email already exists.");
                     return View(model);
                 }
+
+             //   model.Role=UserRole.User;
 
                 _context.Users.Add(model);
                 _context.SaveChanges();
@@ -97,6 +100,28 @@ namespace Flight_Booking_System.Controllers
             Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+
+        // GET: /User/CancelBooking/{id}
+        public ActionResult CancelBooking(int id)
+        {
+            int userId;
+            if (Session["Id"] == null || !int.TryParse(Session["Id"].ToString(), out userId))
+            {
+                return RedirectToAction("Login");
+            }
+
+            var booking = _context.Bookings.FirstOrDefault(b => b.Id == id && b.UserId == userId);
+            if (booking == null)
+            {
+                return HttpNotFound();
+            }
+
+            _context.Bookings.Remove(booking);
+            _context.SaveChanges();
+
+            return RedirectToAction("Profile","User");
+        }
+
 
 
         // GET: User/Profile

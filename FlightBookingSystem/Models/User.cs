@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace FlightBookingSystem.Models
 {
@@ -28,8 +29,14 @@ namespace FlightBookingSystem.Models
         public string Password { get; set; }
 
         [Required]
-        public UserRole Role { get; set; } = UserRole.User;
+
+        public string Role { get; set; } =UserRole.User.ToString();
+
 
         public virtual ICollection<Booking> Bookings { get; set; }
+
+       
+
+        
     }
 }

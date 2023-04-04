@@ -17,14 +17,14 @@
         @foreach (var user in Model)
         {
             <tr>
-                <td>@user.Id</td>
+                <td>@user.UserId</td>
                 <td>@user.FirstName</td>
                 <td>@user.LastName</td>
                 <td>@user.Email</td>
                 
                 <td>
-                    <a href="@Url.Action("EditUser", "AdminUser", new { id = user.Id })">Edit</a> |
-                    <a href="@Url.Action("DeleteUser", "AdminUser", new { id = user.Id })">Delete</a>
+                    <a href="@Url.Action("EditUser", "AdminUser", new { id = user.UserId })">Edit</a> |
+                    <a href="@Url.Action("DeleteUser", "AdminUser", new { id = user.UserId })">Delete</a>
                 </td>
             </tr>
         }

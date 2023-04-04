@@ -37,6 +37,8 @@ public class BookingController : Controller
             return RedirectToAction("Login", "User");
         }
 
+
+
         Session["FlightId"] = flight.FlightId;
         Session["UserId"] = user.UserId;
         var booking = new Booking()
@@ -64,23 +66,31 @@ public class BookingController : Controller
             return RedirectToAction("Login", "User");
         }
 
-        decimal price;
-        switch (booking.CabinClass)
-        {
-            case CabinClass.Economy:
-                price = 1000;
-                break;
-            case CabinClass.Business:
-                price = 2000;
-                break;
-            case CabinClass.First:
-                price = 3000;
-                break;
-            default:
-                return RedirectToAction("Error", "Home");
-        }
+        var flight = _context.Flights.Find((int)Session["FlightId"]);
+
+
+
+
+            decimal price;
+            switch (booking.CabinClass)
+            {
+                case CabinClass.Economy:
+                    price = flight.Price;
+
+                    break;
+                case CabinClass.Business:
+                    price = price = booking.Flight.Price + 2000;
+                    break;
+                case CabinClass.First:
+                    price = price = booking.Flight.Price + 3000;
+                    break;
+                default:
+                    return RedirectToAction("Error", "Home");
+            }
+        
         booking.FlightId = (int)Session["FlightId"];
         booking.UserId = (int)Session["UserId"];
+        booking.Price = price*booking.NoOfTicket;
         _context.Bookings.Add(booking);
         _context.SaveChanges();
 
