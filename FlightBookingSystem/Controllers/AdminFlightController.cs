@@ -49,7 +49,7 @@ namespace FlightBookingSystem.Controllers
 
         public ActionResult EditFlight(int id)
         {
-            var flight = _context.Flights.FirstOrDefault(f => f.Id == id);
+            var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
 
             if (flight == null)
             {
@@ -67,7 +67,7 @@ namespace FlightBookingSystem.Controllers
                 return View(flight);
             }
 
-            var existingFlight = _context.Flights.FirstOrDefault(f => f.Id == flight.Id);
+            var existingFlight = _context.Flights.FirstOrDefault(f => f.FlightId == flight.FlightId);
 
             if (existingFlight == null)
             {
@@ -88,7 +88,7 @@ namespace FlightBookingSystem.Controllers
 
         public ActionResult DeleteFlight(int id)
         {
-            var flight = _context.Flights.FirstOrDefault(f => f.Id == id);
+            var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
 
             if (flight == null)
             {

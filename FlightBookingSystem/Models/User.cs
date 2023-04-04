@@ -8,7 +8,8 @@ namespace FlightBookingSystem.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        [Key]
+        public int UserId { get; set; }
 
         [Required]
         [StringLength(50)]

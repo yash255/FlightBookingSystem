@@ -1,10 +1,16 @@
 ﻿@model FlightBookingSystem.Models.User
 
+@{
+    ViewBag.Title = "Login";
+}
+
 <h2>Login</h2>
 
-@using (Html.BeginForm("Login", "User"))
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+
+
 
     <div class="form-group">
         @Html.LabelFor(m => m.Email)
@@ -17,5 +23,13 @@
         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+
+
+    <div class="form-group">
+        <input type="submit" value="Log in" class="btn btn-default" />
+    </div>
 }
+
+<div>
+    @Html.ActionLink("Register as a new user", "Register")
+</div>

@@ -46,7 +46,7 @@ namespace FlightBookingSystem.Controllers
 
         public ActionResult EditUser(int id)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            var user = _context.Users.FirstOrDefault(u => u.UserId == id);
 
             if (user == null)
             {
@@ -64,7 +64,7 @@ namespace FlightBookingSystem.Controllers
                 return View(user);
             }
 
-            var existingUser = _context.Users.FirstOrDefault(u => u.Id == user.Id);
+            var existingUser = _context.Users.FirstOrDefault(u => u.UserId == user.UserId);
 
             if (existingUser == null)
             {
@@ -84,7 +84,7 @@ namespace FlightBookingSystem.Controllers
 
         public ActionResult DeleteUser(int id)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            var user = _context.Users.FirstOrDefault(u => u.UserId == id);
 
             if (user == null)
             {

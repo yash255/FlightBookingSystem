@@ -12,7 +12,7 @@ namespace FlightBookingSystem.Resource
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Flight> Flights { get; set; }
-     //   public DbSet<City> Cities { get; set; }
+    
         public DbSet<Booking> Bookings { get; set; }
 
        
@@ -20,35 +20,18 @@ namespace FlightBookingSystem.Resource
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Booking>()
-                .HasRequired(b => b.Flight)
-                .WithMany(f => f.Bookings)
-                .HasForeignKey(b => b.FlightId)
-                .WillCascadeOnDelete(false);
+     .HasRequired(b => b.Flight)
+     .WithMany(f => f.Bookings)
+     .HasForeignKey(b => b.FlightId)
+     .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Booking>()
                 .HasRequired(b => b.User)
                 .WithMany(u => u.Bookings)
                 .HasForeignKey(b => b.UserId)
-                .WillCascadeOnDelete(false);
-
-          /*  modelBuilder.Entity<Flight>()
-                  .HasRequired(f => f.User)
-                  .WithMany(u => u.Flights)
-                  .HasForeignKey(f => f.UserId)
-                  .WillCascadeOnDelete(false);*/
+                .WillCascadeOnDelete(true);
 
 
-            /* modelBuilder.Entity<Flight>()
-                 .HasRequired(f => f.DepartureCity)
-                 .WithMany(c => c.DepartureFlights)
-                 .HasForeignKey(f => f.DepartureCityId)
-                 .WillCascadeOnDelete(false);
-
-             modelBuilder.Entity<Flight>()
-                 .HasRequired(f => f.ArrivalCity)
-                 .WithMany(c => c.ArrivalFlights)
-                 .HasForeignKey(f => f.ArrivalCityId)
-                 .WillCascadeOnDelete(false);*/
 
 
 

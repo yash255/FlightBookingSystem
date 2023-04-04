@@ -1,106 +1,100 @@
 ﻿using FlightBookingSystem.Models;
 using FlightBookingSystem.Resource;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System;
+using System.Linq;
+using FlightBookingSystem;
 
-namespace FlightBookingSystem.Controllers
+public class BookingController : Controller
 {
-    public class BookingController : Controller
+    private readonly AppDbContext _context;
+
+    public BookingController()
     {
-        private readonly AppDbContext _context;
+        _context = new AppDbContext();
+    }
 
-        public BookingController()
+    [Route("booking/create/{id:int}")]
+    public ActionResult CreateBooking(int id)
+    {
+        var flight = _context.Flights.Find(id);
+
+        if (flight == null)
         {
-            _context = new AppDbContext();
+            return HttpNotFound();
         }
 
-        // GET: Booking/Create
-        public ActionResult CreateBooking(int id)
+        int userId = Convert.ToInt32(Session["Id"]);
+
+        User user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+
+        if (user == null)
         {
-            var flight = _context.Flights.Find(id);
-
-            if (flight == null)
-            {
-                return HttpNotFound();
-            }
-
-            var user = _context.Users.FirstOrDefault(u => u.Email == User.Identity.Name);
-
-           /* if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Account");
-            }*/
-
-            var booking = new Booking()
-            {
-                FlightId = flight.Id,
-                UserId = user.Id,
-                BookingTime = DateTime.Now,
-                Price = flight.Price
-            };
-
-            _context.Bookings.Add(booking);
-            _context.SaveChanges();
-
-            return RedirectToAction("Confirmation", new { id = booking.Id });
+            return RedirectToAction("Login", "User");
         }
 
-
-
-        // POST: Booking/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateBooking(Booking booking)
+        var booking = new Booking()
         {
-            // Validate the booking model
-            if (!ModelState.IsValid)
-            {
-                return View(booking);
-            }
+            FlightId = flight.FlightId,
+            UserId = user.UserId,
+            BookingTime = DateTime.Now,
+            Price = flight.Price,
 
-            // Calculate the price based on the flight's base price and the selected cabin class
-            decimal price;
-            switch (booking.CabinClass)
-            {
-                case CabinClass.Economy:
-                    price = 1000;
-                    break;
-                case CabinClass.Business:
-                    price = 2000;
-                    break;
-                case CabinClass.First:
-                    price = 3000;
-                    break;
-                default:
-                    return RedirectToAction("Error", "Home");
-            }
-            price *= booking.NoOfTickets;
+        };
 
-            // Set the booking price and save changes to the database
-            booking.Price = price;
-            _context.Bookings.Add(booking);
-            _context.SaveChanges();
+        return View(booking);
+    }
 
-            return RedirectToAction("Confirmation");
-        }
-
-
-        public ActionResult Confirmation(int id)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Route("booking/create")]
+    public ActionResult CreateBooking(Booking booking)
+    {
+        // Validate the booking model
+        if (!ModelState.IsValid)
         {
-            var booking = _context.Bookings
-                .Include("Flight")
-                .FirstOrDefault(b => b.Id == id);
-
-            if (booking == null)
-            {
-                return HttpNotFound();
-            }
-
             return View(booking);
         }
 
+        int userId = Convert.ToInt32(Session["Id"]);
+
+        // Check if the user ID exists in the database
+        User user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+
+        if (user == null)
+        {
+            return RedirectToAction("Login", "User");
+        }
+
+      
+
+        // Calculate the price based on the flight's base price and the selected cabin class
+        decimal price;
+        switch (booking.CabinClass)
+        {
+            case CabinClass.Economy:
+                price = 1000;
+                break;
+            case CabinClass.Business:
+                price = 2000;
+                break;
+            case CabinClass.First:
+                price = 3000;
+                break;
+            default:
+                return RedirectToAction("Error", "Home");
+        }
+        price *= booking.NoOfTickets;
+
+        // Set the booking price and save changes to the database
+        booking.Price = price;
+        booking.BookingTime = DateTime.Now;
+        booking.UserId = userId;
+
+        _context.Bookings.Add(booking);
+        _context.SaveChanges();
+
+        return RedirectToAction("Confirmation", new { id = booking.Id });
     }
+
 }

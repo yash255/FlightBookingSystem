@@ -27,8 +27,8 @@
                 <td>@flight.ArrivalTime</td>
                 <td>@flight.Price.ToString("C")</td>
                 <td>
-                    <a href="@Url.Action("EditFlight", new { id = flight.Id })" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="@Url.Action("DeleteFlight", new { id = flight.Id })" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="@Url.Action("EditFlight", new { id = flight.FlightId })" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="@Url.Action("DeleteFlight", new { id = flight.FlightId })" class="btn btn-sm btn-danger">Delete</a>
                 </td>
             </tr>
         }

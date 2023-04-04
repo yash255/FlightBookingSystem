@@ -9,7 +9,8 @@ namespace FlightBookingSystem.Models
 {
     public class Flight
     {
-        public int Id { get; set; }
+        [Key]
+        public int FlightId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -33,12 +34,9 @@ namespace FlightBookingSystem.Models
         public decimal Price { get; set; }
 
         
-       /* public int UserId { get; set; }
+       
 
-        [ForeignKey("UserId")]
-        public User User { get; set; }*/
-
-        public ICollection<Booking> Bookings { get; set; }
+       public virtual ICollection<Booking> Bookings { get; set; }
     }
 
 }

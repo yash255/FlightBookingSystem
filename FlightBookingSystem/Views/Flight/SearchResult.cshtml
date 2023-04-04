@@ -43,9 +43,10 @@ else
             <a class="btn btn-primary" href="@Url.Action("Login", "Account")">Login to Create Booking</a>
         }*@
 
-                        <a href="@Url.Action("CreateBooking", "Booking", new { id = flight.Id })" class="btn btn-primary">Create Booking</a>
+                        @*                        <a href="@Url.Action("CreateBooking", "Booking", new { id = flight.Id })" class="btn btn-primary">Create Booking</a>
+                        *@
 
-
+                        <a href="@Url.Action("CreateBooking", "Booking", new { id = flight.FlightId })" class="btn btn-primary">Book</a>
 
 
 

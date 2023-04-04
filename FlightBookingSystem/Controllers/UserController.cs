@@ -1,29 +1,31 @@
-﻿using FlightBookingSystem.Models;
+﻿
+using FlightBookingSystem.Models;
 using FlightBookingSystem.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
-namespace FlightBookingSystem.Controllers
+namespace Flight_Booking_System.Controllers
 {
     public class UserController : Controller
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
 
         public UserController()
         {
             _context = new AppDbContext();
         }
 
-
-
+        // GET: User/Register
         public ActionResult Register()
         {
             return View();
         }
 
+        // POST: User/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User model)
@@ -36,9 +38,6 @@ namespace FlightBookingSystem.Controllers
                     return View(model);
                 }
 
-                
-            //    model.Role = UserRole.User;
-
                 _context.Users.Add(model);
                 _context.SaveChanges();
 
@@ -48,8 +47,7 @@ namespace FlightBookingSystem.Controllers
             return View(model);
         }
 
-    
-
+        // GET: User/Login
         public ActionResult Login()
         {
             return View();
@@ -64,7 +62,7 @@ namespace FlightBookingSystem.Controllers
 
             if (user != null)
             {
-                Session["Id"] = user.Id;
+                Session["Id"] = user.UserId;
                 Session["Email"] = user.Email;
                 return RedirectToAction("Index", "Home");
             }
@@ -74,13 +72,12 @@ namespace FlightBookingSystem.Controllers
         }
 
 
-
         [HttpGet]
         public ActionResult Profile()
         {
             int userId = Convert.ToInt32(Session["Id"]);
 
-            User user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            User user = _context.Users.FirstOrDefault(u => u.UserId == userId);
 
             if (user == null)
             {
@@ -100,6 +97,19 @@ namespace FlightBookingSystem.Controllers
             Session.Clear();
             return RedirectToAction("Index", "Home");
         }
-    }
 
+
+        // GET: User/Profile
+
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+    }
 }

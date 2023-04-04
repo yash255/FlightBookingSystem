@@ -9,6 +9,7 @@ namespace FlightBookingSystem.Models
 {
     public class Booking
     {
+        [Key]
         public int Id { get; set; }
 
 
@@ -23,17 +24,14 @@ namespace FlightBookingSystem.Models
         public Gender Gender { get; set; }
 
         [Required]
-        [StringLength(50)]
-        [EmailAddress]
+       
         public string Email { get; set; }
 
         [Required]
-        [DataType(DataType.PhoneNumber)]
-        public string PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue)]
-        public int NoOfTickets { get; set; }
+        public byte NoOfTickets { get; set; }
 
         [Required]
         public CabinClass CabinClass { get; set; }
@@ -47,15 +45,18 @@ namespace FlightBookingSystem.Models
         public decimal Price { get; set; }
 
 
+
+        
+       public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
+
+
         [Required]
         public int FlightId { get; set; }
 
         [ForeignKey("FlightId")]
         public Flight Flight { get; set; }
-
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
     }
 
 }
