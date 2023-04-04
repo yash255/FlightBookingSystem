@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FlightUpdate : DbMigration
+    public partial class firstmodel : DbMigration
     {
         public override void Up()
         {
