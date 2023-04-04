@@ -7,7 +7,7 @@
 <h2>Welcome, @Model.FirstName!</h2>
 
 <div class="row">
-    <div class="col-md-6">
+    <div>
         <h4>User Information</h4>
         <table class="table">
             <tr>
@@ -25,7 +25,7 @@
 
         </table>
     </div>
-    <div class="col-md-6">
+    <div>
         <h4>Bookings</h4>
         @if (Model.Bookings != null && Model.Bookings.Any())
         {
@@ -37,7 +37,7 @@
                         <th>Date</th>
                         <th>No. of Tickets</th>
                         <th>Cabin Class</th>
-                        <th>Total Price</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -48,9 +48,9 @@
                             <td>@booking.Flight.FlightNumber - @booking.Flight.DepartureCity to @booking.Flight.ArrivalCity</td>
                             <td>@booking.Flight.ArrivalTime.ToString("dd MMM yyyy")</td>
                             <td>@booking.Flight.DepartureTime.ToString("dd MMM yyyy")</td>
-                            <td>@booking.NoOfTickets</td>
+                            <td>@booking.NoOfTicket</td>
                             <td>@booking.CabinClass</td>
-                            <td>@booking.Price</td>
+                            
                         </tr>
                     }
                 </tbody>

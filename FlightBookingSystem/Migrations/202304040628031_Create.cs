@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FlightUpdate : DbMigration
+    public partial class Create : DbMigration
     {
         public override void Up()
         {
@@ -12,23 +12,23 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        PassengerName = c.String(nullable: false),
-                        Age = c.Int(nullable: false),
+                        FlightId = c.Int(nullable: false),
+                        UserId = c.Int(nullable: false),
+                        PassengerName = c.String(nullable: false, maxLength: 50),
                         Gender = c.Int(nullable: false),
-                        Email = c.String(nullable: false),
-                        PhoneNumber = c.Long(nullable: false),
-                        NoOfTickets = c.Byte(nullable: false),
+                        Age = c.Int(nullable: false),
                         CabinClass = c.Int(nullable: false),
+                        Email = c.String(nullable: false),
+                        PhoneNumber = c.String(nullable: false),
+                        NumberOfTickets = c.Int(nullable: false),
                         BookingTime = c.DateTime(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        UserId = c.Int(nullable: false),
-                        FlightId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Flights", t => t.FlightId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.FlightId);
+                .ForeignKey("dbo.Flights", t => t.FlightId)
+                .ForeignKey("dbo.Users", t => t.UserId)
+                .Index(t => t.FlightId)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.Flights",
@@ -63,8 +63,8 @@
         {
             DropForeignKey("dbo.Bookings", "UserId", "dbo.Users");
             DropForeignKey("dbo.Bookings", "FlightId", "dbo.Flights");
-            DropIndex("dbo.Bookings", new[] { "FlightId" });
             DropIndex("dbo.Bookings", new[] { "UserId" });
+            DropIndex("dbo.Bookings", new[] { "FlightId" });
             DropTable("dbo.Users");
             DropTable("dbo.Flights");
             DropTable("dbo.Bookings");

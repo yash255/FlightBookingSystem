@@ -16,12 +16,10 @@ namespace FlightBookingSystem.Models
         [StringLength(50)]
         public string FlightNumber { get; set; }
 
-        
-
-        
+        [Required]
         public string DepartureCity { get; set; }
 
-       
+        [Required]
         public string ArrivalCity { get; set; }
 
         [Required]
@@ -33,10 +31,6 @@ namespace FlightBookingSystem.Models
         [Required]
         public decimal Price { get; set; }
 
-        
-       
-
-       public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
-
 }

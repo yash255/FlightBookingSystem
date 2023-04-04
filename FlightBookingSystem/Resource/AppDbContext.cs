@@ -19,17 +19,8 @@ namespace FlightBookingSystem.Resource
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Booking>()
-     .HasRequired(b => b.Flight)
-     .WithMany(f => f.Bookings)
-     .HasForeignKey(b => b.FlightId)
-     .WillCascadeOnDelete(true);
 
-            modelBuilder.Entity<Booking>()
-                .HasRequired(b => b.User)
-                .WithMany(u => u.Bookings)
-                .HasForeignKey(b => b.UserId)
-                .WillCascadeOnDelete(true);
+            base.OnModelCreating(modelBuilder);
 
 
 
