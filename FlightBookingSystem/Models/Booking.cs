@@ -37,8 +37,8 @@ namespace FlightBookingSystem.Models
         [Required]
         public int NoOfTicket { get; set; }
 
-      
-
+        [Required]
+        public decimal Price { get; set; }
 
         [Required]
         public int FlightId { get; set; }

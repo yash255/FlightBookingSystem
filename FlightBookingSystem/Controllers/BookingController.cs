@@ -42,8 +42,8 @@ public class BookingController : Controller
         {
             FlightId = flight.FlightId,
             UserId = user.UserId,
-          //  BookingTime = DateTime.Now,
-            // Price = flight.Price
+         
+             Price = flight.Price
         };
 
         return View(booking);

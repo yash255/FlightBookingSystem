@@ -172,6 +172,10 @@
     <Compile Include="Migrations\202304041037008_UpdateBook2.designer.cs">
       <DependentUpon>202304041037008_UpdateBook2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304041148063_PriceAdded.cs" />
+    <Compile Include="Migrations\202304041148063_PriceAdded.designer.cs">
+      <DependentUpon>202304041148063_PriceAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Flight.cs" />
@@ -304,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304041037008_UpdateBook2.resx">
       <DependentUpon>202304041037008_UpdateBook2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304041148063_PriceAdded.resx">
+      <DependentUpon>202304041148063_PriceAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
