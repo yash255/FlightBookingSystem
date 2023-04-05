@@ -2,6 +2,17 @@
 
 <h2>Create Booking</h2>
 
+<div style="position:absolute; top:50; right:0;">
+<label for="ticketTypes"></label>
+<br />
+<textarea id="ticketTypes" readonly cols="35" rows="6">
+       Cabin Classes and Prices:
+        Economy = @Model.Price Rs
+        Business = @Model.Price+2000 Rs
+        First Class = @Model.Price+3000 Rs
+    </textarea>
+</div>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

@@ -19,11 +19,7 @@ namespace FlightBookingSystem
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-    name: "CreateBooking",
-    url: "Booking/CreateBooking/{id}",
-    defaults: new { controller = "Booking", action = "CreateBooking", id = UrlParameter.Optional }
-);
+            
 
 
         }

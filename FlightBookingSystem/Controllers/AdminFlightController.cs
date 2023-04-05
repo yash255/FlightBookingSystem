@@ -9,7 +9,7 @@ namespace FlightBookingSystem.Controllers
 {
 
 
-    [AdminOnly]
+    
     public class AdminFlightController : Controller
     {
 
