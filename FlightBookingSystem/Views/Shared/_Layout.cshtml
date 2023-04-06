@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,18 +18,22 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                 
+
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
-                   
-                    
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Profile", "Profile", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
                         <li class="nav-item">@Html.ActionLink("Register", "Register", "User", null, new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("Login", "Login", "User", null, new { @class = "nav-link" })</li>
-                   
-                <li class="nav-item">@Html.ActionLink("Profile", "Profile", "User", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li class="nav-item">@Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })</li>
-                    
+                    }
+
                 </ul>
             </div>
         </div>
@@ -38,7 +41,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-       
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")

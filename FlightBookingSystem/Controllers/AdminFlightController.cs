@@ -1,7 +1,9 @@
 ﻿using FlightBookingSystem.Models;
+using FlightBookingSystem.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,8 +12,12 @@ namespace FlightBookingSystem.Controllers
 
 
     
+
     public class AdminFlightController : Controller
     {
+
+
+       
 
         private readonly Resource.AppDbContext _context;
 
@@ -24,7 +30,7 @@ namespace FlightBookingSystem.Controllers
 
 
         // CRUD operations for flights
-       
+        [CustomAuthorize("Admin")]
         public ActionResult FlightsList()
         {
             var flights = _context.Flights.ToList();

@@ -1,5 +1,4 @@
-﻿
-using FlightBookingSystem;
+﻿using FlightBookingSystem;
 using FlightBookingSystem.Models;
 using FlightBookingSystem.Resource;
 using System;
@@ -38,7 +37,7 @@ namespace Flight_Booking_System.Controllers
                     ModelState.AddModelError("Email", "Email already exists.");
                     return View(model);
                 }
-              //  model.Role = (UserRole)Enum.Parse(typeof(UserRole), "User");
+                //  model.Role = (UserRole)Enum.Parse(typeof(UserRole), "User");
 
 
                 //   model.Role=UserRole.User;
@@ -67,15 +66,20 @@ namespace Flight_Booking_System.Controllers
 
             if (user != null)
             {
+                // Create the authentication cookie
+                FormsAuthentication.SetAuthCookie(user.UserId.ToString(), false);
+
                 Session["Id"] = user.UserId;
                 Session["Email"] = user.Email;
-                Session["Role"] = user.Role;
+                Session["Role"] = user.Role.ToString();
+
                 return RedirectToAction("Index", "Home");
             }
 
             ModelState.AddModelError("", "Invalid username or password");
             return View(model);
         }
+
 
 
         [HttpGet]
@@ -98,11 +102,15 @@ namespace Flight_Booking_System.Controllers
         }
 
         // GET: User/Logout
+        // GET: User/Logout
         public ActionResult Logout()
         {
             Session.Clear();
+            Session.Abandon();
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
 
         // GET: /User/CancelBooking/{id}
         public ActionResult CancelBooking(int id)
@@ -122,12 +130,12 @@ namespace Flight_Booking_System.Controllers
             _context.Bookings.Remove(booking);
             _context.SaveChanges();
 
-            return RedirectToAction("Profile","User");
+            return RedirectToAction("Profile", "User");
         }
 
 
 
-        
+
 
 
         protected override void Dispose(bool disposing)
