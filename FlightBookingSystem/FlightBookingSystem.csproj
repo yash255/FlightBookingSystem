@@ -143,7 +143,6 @@
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Resource\AdminAuthorizationAttribute.cs" />
     <Compile Include="Resource\AppDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

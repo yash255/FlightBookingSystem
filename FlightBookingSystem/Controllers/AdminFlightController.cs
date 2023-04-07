@@ -29,42 +29,59 @@ namespace FlightBookingSystem.Controllers
 
 
 
-        // CRUD operations for flights
-        
-     //  [CustomAuthorize(Roles = "Admin")]
         public ActionResult FlightsList()
         {
+            if (Session["Id"] == null || (UserRole)Session["Role"] != UserRole.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var flights = _context.Flights.ToList();
             return View(flights);
         }
 
         public ActionResult CreateFlight()
         {
+            if (Session["Id"] == null || (UserRole)Session["Role"] != UserRole.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateFlight(Flight flight)
         {
+            if (Session["Id"] == null || (UserRole)Session["Role"] != UserRole.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+
             if (!ModelState.IsValid)
-            {
-                return View(flight);
-            }
+                {
+                    return View(flight);
+                }
 
-            if (_context.Flights.Any(f => f.FlightNumber == flight.FlightNumber))
-            {
-                ModelState.AddModelError("", "A flight with the same flight number already exists.");
-                return View(flight);
-            }
+                if (_context.Flights.Any(f => f.FlightNumber == flight.FlightNumber))
+                {
+                    ModelState.AddModelError("", "A flight with the same flight number already exists.");
+                    return View(flight);
+                }
 
-            _context.Flights.Add(flight);
-            _context.SaveChanges();
+                _context.Flights.Add(flight);
+                _context.SaveChanges();
 
-            return RedirectToAction("FlightsList");
+                return RedirectToAction("FlightsList");
+            
         }
 
         public ActionResult EditFlight(int id)
         {
+            if (Session["Id"] == null || (UserRole)Session["Role"] != UserRole.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
 
             if (flight == null)
@@ -78,6 +95,10 @@ namespace FlightBookingSystem.Controllers
         [HttpPost]
         public ActionResult EditFlight(Flight flight)
         {
+            if (Session["Id"] == null || (UserRole)Session["Role"] != UserRole.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (!ModelState.IsValid)
             {
                 return View(flight);
@@ -104,6 +125,10 @@ namespace FlightBookingSystem.Controllers
 
         public ActionResult DeleteFlight(int id)
         {
+            if (Session["Id"] == null || (UserRole)Session["Role"] != UserRole.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var flight = _context.Flights.FirstOrDefault(f => f.FlightId == id);
 
             if (flight == null)

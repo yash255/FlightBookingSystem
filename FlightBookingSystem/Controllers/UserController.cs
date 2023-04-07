@@ -83,18 +83,11 @@ namespace Flight_Booking_System.Controllers
                 Session["Email"] = user.Email;
                 Session["Role"] = user.Role;
 
-                if (user.Role == UserRole.Admin)
-                {
-                    return RedirectToAction("FlightsList", "AdminFlight");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+               
 
                
             }
-
+            return RedirectToAction("Index", "Home");
 
 
 
@@ -158,6 +151,9 @@ namespace Flight_Booking_System.Controllers
 
             return RedirectToAction("Profile", "User");
         }
+
+
+
 
 
 

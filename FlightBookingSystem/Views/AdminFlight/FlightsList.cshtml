@@ -1,36 +1,38 @@
 ﻿@model List<FlightBookingSystem.Models.Flight>
 
-<h2>Flights List</h2>
 
-<a href="@Url.Action("CreateFlight")" class="btn btn-primary">Add Flight</a>
+    <h2>Flights List</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Flight Number</th>
-            <th>Departure City</th>
-            <th>Arrival City</th>
-            <th>Departure Time</th>
-            <th>Arrival Time</th>
-            <th>Price</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var flight in Model)
-        {
+    <a href="@Url.Action("CreateFlight")" class="btn btn-primary">Add Flight</a>
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>@flight.FlightNumber</td>
-                <td>@flight.DepartureCity</td>
-                <td>@flight.ArrivalCity</td>
-                <td>@flight.DepartureTime</td>
-                <td>@flight.ArrivalTime</td>
-                <td>@flight.Price.ToString("C")</td>
-                <td>
-                    <a href="@Url.Action("EditFlight", new { id = flight.FlightId })" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="@Url.Action("DeleteFlight", new { id = flight.FlightId })" class="btn btn-sm btn-danger">Delete</a>
-                </td>
+                <th>Flight Number</th>
+                <th>Departure City</th>
+                <th>Arrival City</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@flight.FlightNumber</td>
+                    <td>@flight.DepartureCity</td>
+                    <td>@flight.ArrivalCity</td>
+                    <td>@flight.DepartureTime</td>
+                    <td>@flight.ArrivalTime</td>
+                    <td>@flight.Price.ToString("C")</td>
+                    <td>
+                        <a href="@Url.Action("EditFlight", new { id = flight.FlightId })" class="btn btn-sm btn-primary">Edit</a>
+                        <a href="@Url.Action("DeleteFlight", new { id = flight.FlightId })" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
