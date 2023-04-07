@@ -28,13 +28,21 @@ namespace Flight_Booking_System.Controllers
         // POST: User/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(User model)
+        public ActionResult Register(User model, string confirmPassword)
         {
             if (ModelState.IsValid)
             {
                 if (_context.Users.Any(u => u.Email == model.Email))
                 {
                     ModelState.AddModelError("Email", "Email already exists.");
+                    return View(model);
+                }
+
+             
+
+                if (model.Password != confirmPassword)
+                {
+                    ModelState.AddModelError("ConfirmPassword", "The password and confirmation password do not match.");
                     return View(model);
                 }
                 //  model.Role = (UserRole)Enum.Parse(typeof(UserRole), "User");
@@ -106,7 +114,7 @@ namespace Flight_Booking_System.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            Session.Abandon();
+          //  Session.Abandon();
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }

@@ -23,7 +23,7 @@
 
                 <ul class="navbar-nav ml-auto">
 
-                    @if (Request.IsAuthenticated)
+                    @if (Session["Id"] != null)
                     {
                         <li class="nav-item">@Html.ActionLink("Profile", "Profile", "User", new { area = "" }, new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })</li>

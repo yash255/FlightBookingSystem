@@ -46,7 +46,8 @@ else
                         @*                        <a href="@Url.Action("CreateBooking", "Booking", new { id = flight.Id })" class="btn btn-primary">Create Booking</a>
                         *@
 
-                    <td><a href="@Url.Action("CreateBooking", "Booking", new { id = flight.FlightId })" class="btn btn-primary">Book</a></td> <!-- add this column with a link to CreateBooking action in the Booking controller -->
+                    <td><a href="@Url.Action("CreateBooking", "Booking", new { id = flight.FlightId })" class="btn btn-primary">Book
+                        </a></td> <!-- add this column with a link to CreateBooking action in the Booking controller -->
                     </td>
                 </tr>
             }

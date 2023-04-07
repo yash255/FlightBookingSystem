@@ -11,8 +11,8 @@ namespace FlightBookingSystem.Controllers
 {
 
 
-    
 
+   
     public class AdminFlightController : Controller
     {
 
@@ -30,7 +30,8 @@ namespace FlightBookingSystem.Controllers
 
 
         // CRUD operations for flights
-        [CustomAuthorize("Admin")]
+        
+       [CustomAuthorize(Roles = "Admin")]
         public ActionResult FlightsList()
         {
             var flights = _context.Flights.ToList();
@@ -47,6 +48,12 @@ namespace FlightBookingSystem.Controllers
         {
             if (!ModelState.IsValid)
             {
+                return View(flight);
+            }
+
+            if (_context.Flights.Any(f => f.FlightNumber == flight.FlightNumber))
+            {
+                ModelState.AddModelError("", "A flight with the same flight number already exists.");
                 return View(flight);
             }
 
