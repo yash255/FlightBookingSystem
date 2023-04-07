@@ -31,7 +31,7 @@ namespace FlightBookingSystem.Controllers
 
         // CRUD operations for flights
         
-       [CustomAuthorize(Roles = "Admin")]
+     //  [CustomAuthorize(Roles = "Admin")]
         public ActionResult FlightsList()
         {
             var flights = _context.Flights.ToList();

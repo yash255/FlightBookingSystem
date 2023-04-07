@@ -128,7 +128,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminFlightController.cs" />
-    <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -265,8 +264,6 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Flight\Search.cshtml" />
     <Content Include="Views\Flight\SearchResult.cshtml" />
-    <Content Include="Views\AdminUser\UsersList.cshtml" />
-    <Content Include="Views\AdminUser\EditUser.cshtml" />
     <Content Include="Views\AdminFlight\FlightsList.cshtml" />
     <Content Include="Views\AdminFlight\CreateFlight.cshtml" />
     <Content Include="Views\AdminFlight\EditFlight.cshtml" />
