@@ -49,6 +49,8 @@ namespace Flight_Booking_System.Controllers
 
 
                 //   model.Role=UserRole.User;
+                model.Role = FlightBookingSystem.UserRole.User; // Set the default role as User
+
 
                 _context.Users.Add(model);
                 _context.SaveChanges();
@@ -79,10 +81,26 @@ namespace Flight_Booking_System.Controllers
 
                 Session["Id"] = user.UserId;
                 Session["Email"] = user.Email;
-                Session["Role"] = user.Role.ToString();
+                Session["Role"] = user.Role;
 
-                return RedirectToAction("Index", "Home");
+                if (user.Role == UserRole.Admin)
+                {
+                    return RedirectToAction("FlightsList", "AdminFlight");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+               
             }
+
+
+
+
+
+
+
 
             ModelState.AddModelError("", "Invalid username or password");
             return View(model);

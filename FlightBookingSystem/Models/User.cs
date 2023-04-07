@@ -29,7 +29,7 @@ namespace FlightBookingSystem.Models
         public string Password { get; set; }
 
         [Required]
-        public string Role { get; set; } ="User";
+        public UserRole Role { get; set; } =UserRole.User;
 
 
         public virtual ICollection<Booking> Bookings { get; set; }

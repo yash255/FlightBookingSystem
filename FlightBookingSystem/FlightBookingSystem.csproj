@@ -134,69 +134,10 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="enum\CabinClass.cs" />
     <Compile Include="enum\Gender.cs" />
-    <Compile Include="Migrations\202304040628031_Create.cs" />
-    <Compile Include="Migrations\202304040628031_Create.designer.cs">
-      <DependentUpon>202304040628031_Create.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040634344_CreateUpdate.cs" />
-    <Compile Include="Migrations\202304040634344_CreateUpdate.designer.cs">
-      <DependentUpon>202304040634344_CreateUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040844410_RemovePass.cs" />
-    <Compile Include="Migrations\202304040844410_RemovePass.designer.cs">
-      <DependentUpon>202304040844410_RemovePass.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040901093_UpdateBook.cs" />
-    <Compile Include="Migrations\202304040901093_UpdateBook.designer.cs">
-      <DependentUpon>202304040901093_UpdateBook.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040904476_UpdateBook1.cs" />
-    <Compile Include="Migrations\202304040904476_UpdateBook1.designer.cs">
-      <DependentUpon>202304040904476_UpdateBook1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040936285_CreateBook.cs" />
-    <Compile Include="Migrations\202304040936285_CreateBook.designer.cs">
-      <DependentUpon>202304040936285_CreateBook.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040940416_CreateBook1.cs" />
-    <Compile Include="Migrations\202304040940416_CreateBook1.designer.cs">
-      <DependentUpon>202304040940416_CreateBook1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304040947431_CreateBook2.cs" />
-    <Compile Include="Migrations\202304040947431_CreateBook2.designer.cs">
-      <DependentUpon>202304040947431_CreateBook2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304041037008_UpdateBook2.cs" />
-    <Compile Include="Migrations\202304041037008_UpdateBook2.designer.cs">
-      <DependentUpon>202304041037008_UpdateBook2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304041148063_PriceAdded.cs" />
-    <Compile Include="Migrations\202304041148063_PriceAdded.designer.cs">
-      <DependentUpon>202304041148063_PriceAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304041750462_Enumtostring.cs" />
-    <Compile Include="Migrations\202304041750462_Enumtostring.designer.cs">
-      <DependentUpon>202304041750462_Enumtostring.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304041813313_Enumtostring1.cs" />
-    <Compile Include="Migrations\202304041813313_Enumtostring1.designer.cs">
-      <DependentUpon>202304041813313_Enumtostring1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304041837157_UserRole.cs" />
-    <Compile Include="Migrations\202304041837157_UserRole.designer.cs">
-      <DependentUpon>202304041837157_UserRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304041848258_UserRole1.cs" />
-    <Compile Include="Migrations\202304041848258_UserRole1.designer.cs">
-      <DependentUpon>202304041848258_UserRole1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304061649407_UserUpdate.cs" />
-    <Compile Include="Migrations\202304061649407_UserUpdate.designer.cs">
-      <DependentUpon>202304061649407_UserUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304061727454_UserUpdate1.cs" />
-    <Compile Include="Migrations\202304061727454_UserUpdate1.designer.cs">
-      <DependentUpon>202304061727454_UserUpdate1.cs</DependentUpon>
+    <Compile Include="enum\UserRole.cs" />
+    <Compile Include="Migrations\202304070625032_Create.cs" />
+    <Compile Include="Migrations\202304070625032_Create.designer.cs">
+      <DependentUpon>202304070625032_Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -303,53 +244,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202304040628031_Create.resx">
-      <DependentUpon>202304040628031_Create.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040634344_CreateUpdate.resx">
-      <DependentUpon>202304040634344_CreateUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040844410_RemovePass.resx">
-      <DependentUpon>202304040844410_RemovePass.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040901093_UpdateBook.resx">
-      <DependentUpon>202304040901093_UpdateBook.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040904476_UpdateBook1.resx">
-      <DependentUpon>202304040904476_UpdateBook1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040936285_CreateBook.resx">
-      <DependentUpon>202304040936285_CreateBook.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040940416_CreateBook1.resx">
-      <DependentUpon>202304040940416_CreateBook1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304040947431_CreateBook2.resx">
-      <DependentUpon>202304040947431_CreateBook2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304041037008_UpdateBook2.resx">
-      <DependentUpon>202304041037008_UpdateBook2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304041148063_PriceAdded.resx">
-      <DependentUpon>202304041148063_PriceAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304041750462_Enumtostring.resx">
-      <DependentUpon>202304041750462_Enumtostring.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304041813313_Enumtostring1.resx">
-      <DependentUpon>202304041813313_Enumtostring1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304041837157_UserRole.resx">
-      <DependentUpon>202304041837157_UserRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304041848258_UserRole1.resx">
-      <DependentUpon>202304041848258_UserRole1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304061649407_UserUpdate.resx">
-      <DependentUpon>202304061649407_UserUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304061727454_UserUpdate1.resx">
-      <DependentUpon>202304061727454_UserUpdate1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304070625032_Create.resx">
+      <DependentUpon>202304070625032_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

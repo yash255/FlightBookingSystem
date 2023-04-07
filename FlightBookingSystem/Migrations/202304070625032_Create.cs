@@ -12,21 +12,20 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        FlightId = c.Int(nullable: false),
-                        UserId = c.Int(nullable: false),
                         PassengerName = c.String(nullable: false, maxLength: 50),
                         Gender = c.Int(nullable: false),
                         Age = c.Int(nullable: false),
                         CabinClass = c.Int(nullable: false),
                         Email = c.String(nullable: false),
                         PhoneNumber = c.String(nullable: false),
-                        NumberOfTickets = c.Int(nullable: false),
-                        BookingTime = c.DateTime(nullable: false),
+                        NoOfTicket = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        FlightId = c.Int(nullable: false),
+                        UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Flights", t => t.FlightId)
-                .ForeignKey("dbo.Users", t => t.UserId)
+                .ForeignKey("dbo.Flights", t => t.FlightId, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.FlightId)
                 .Index(t => t.UserId);
             
@@ -36,8 +35,8 @@
                     {
                         FlightId = c.Int(nullable: false, identity: true),
                         FlightNumber = c.String(nullable: false, maxLength: 50),
-                        DepartureCity = c.String(),
-                        ArrivalCity = c.String(),
+                        DepartureCity = c.String(nullable: false),
+                        ArrivalCity = c.String(nullable: false),
                         DepartureTime = c.DateTime(nullable: false),
                         ArrivalTime = c.DateTime(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),

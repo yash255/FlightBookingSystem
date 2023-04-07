@@ -7,13 +7,13 @@ namespace FlightBookingSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CreateBook1 : IMigrationMetadata
+    public sealed partial class Create : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateBook1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Create));
         
         string IMigrationMetadata.Id
         {
-            get { return "202304040940416_CreateBook1"; }
+            get { return "202304070625032_Create"; }
         }
         
         string IMigrationMetadata.Source
